@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+	body{
+		background-color: #f2f2f2;
+	}
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: #fff;
+			box-shadow: 0 0 5px #ccc; 
+		}
+		.rotate{
+			width: 20px;
+			height: 20px;
+			background-color: #fff;
+			transform:rotate(45deg);
+			margin:0 auto;
+		}
+		.box2{
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			/*border-width: 20px;
+			border-style: solid;
+			border-color: #333 transparent transparent transparent;*/
+			transition: transform 0.5s ease;
+			transform-origin: 50% 25%;
+		}
+		
+		.a{
+			width: 50px;
+			height: 50px;
+			background-color: yellow;
+		}
+		.box2:hover .a{
+			transform:rotate(180deg);
+		}
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="rotate"></div>
+	</div>
+
+	<div class="box2">
+		<div class="a"></div>
+	</div>
+</body>
+</html>

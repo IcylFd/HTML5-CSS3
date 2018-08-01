@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>正方形实现方式</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		/*div{
+			float:left;
+			margin-left: 20px;
+		}*/
+		.div1{
+			width:50%;
+			background-color: #ccc;
+		}
+		.div1::after{
+			content:'';
+			display: block;
+			padding-bottom:100%;
+		}
+		.div2{
+			width:10%;
+			height: 10vw;           /*	视口宽度单位 1单位是1%	*/
+			background-color: #ccc;
+		}
+		.div3{
+			width: 50%；
+    		padding-bottom:50%;   /*	padding的百分比是相对于父级的宽度	*/
+    		height:0;   /*清除内容高度*/
+    		background-color: #ccc;
+		}
+
+		.big,.middle,.small{
+			width:50%;
+			padding-bottom: 50%;
+			height: 0;
+		}
+		.big{
+			background-color: pink;
+		}
+		.middle{
+			background-color: #ccc;
+		}
+		.small{
+			background-color: #333;
+		}
+		
+		
+	</style>
+</head>
+<body>
+	<!-- <div class="div1"></div>
+	<div class="div2"></div>
+	<div class="div3"></div> -->
+	<div class="big">
+		<div class="middle">
+			<div class="small">
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

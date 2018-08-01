@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /**{*/
+            /*margin: 0;*/
+            /*padding: 0;*/
+        /*}*/
+        #can{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="can" width="400" height="400"></canvas>
+
+    <script>
+        var oCan = document.getElementById("can");
+        var can = oCan.getContext("2d");
+//        can.beginPath();
+//        can.moveTo(100,150);
+//        can.lineTo(200,200);
+//        can.strokeStyle = "#fff";
+//        can.lineWidth = 5;
+//        can.stroke();
+//        can.closePath();
+//
+//        can.beginPath();
+//        can.moveTo(50,50);
+//        can.lineTo(200,200);
+//        can.strokeStyle = "blue";
+//        can.lineWidth = 5;
+//        can.stroke();
+//        can.closePath();
+
+
+
+        //签字板
+        var color = ["#9e97cc","#0d841d","#97CCB3","#094010","#569ECC","#CC565E","#3AE22D","#3C48CC","#FFDFEF","#FDFE55"];
+        document.onmousedown = function(e){
+            can.beginPath();
+            can.moveTo(e.clientX - oCan.offsetLeft,e.clientY - oCan.offsetTop);
+            var thisColor = Math.floor(Math.random()*11);
+            document.onmousemove = function (e) {
+                can.lineTo(e.clientX - oCan.offsetLeft,e.clientY - oCan.offsetTop);
+                can.strokeStyle = color[thisColor];
+                console.log(thisColor);
+                can.lineWidth = 1;
+                can.stroke();
+            };
+            document.onmouseup = function () {
+                document.onmousemove = document.onmouseup = null;
+                can.closePath();
+            }
+
+
+        }
+
+
+console.log();
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto"></canvas>
+</body>
+
+<script>
+    window.onload = function () {
+
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
+
+        canvas.width = 800;
+        canvas.height = 800;
+
+
+        //拼图
+        context.beginPath();
+        context.rect(100, 100, 600, 600);
+        pathRect(context, 200, 200, 400, 200);
+        pathTriangle(context, 300, 450, 150, 650, 450, 650);
+        context.arc(550, 550, 100, 0, 2*Math.PI, true);
+        context.closePath();
+
+        context.fillStyle = "#0051ab";
+        context.shadowColor = "#ccc";
+        context.shadowOffsetX = 10;
+        context.shadowOffsetY = 10;
+        context.shadowBlur = 10;
+        context.fill();
+
+        function pathRect(cxt, x, y, width, height) {           //不能用closePath
+            cxt.moveTo(x, y);
+            cxt.lineTo(x, y + height);
+            cxt.lineTo(x + width, y + height);
+            cxt.lineTo(x + width, y);
+            cxt.lineTo(x, y);
+        }
+
+        function pathTriangle(cxt, x1, y1, x2, y2, x3, y3) {
+            cxt.moveTo(x1, y1);
+            cxt.lineTo(x2, y2);
+            cxt.lineTo(x3, y3);
+            cxt.moveTo(x1, y1);
+        }
+
+
+
+
+
+
+
+        //阴影圆环
+//        context.beginPath();
+//        context.arc(400, 400, 300, 0, 2*Math.PI, false);
+//        context.arc(400, 400, 150, 0, 2*Math.PI, true);
+//        context.closePath();
+//
+//        context.fillStyle = "#0051ab";
+//        context.shadowColor = "#ccc";
+//        context.shadowOffsetX = 10;
+//        context.shadowOffsetY = 10;
+//        context.shadowBlur = 10;
+//        context.fill();
+
+
+
+
+
+        //2048棋盘格
+//        fillRoundRect(context, 150, 150, 500, 500, 10, "#bbada0");
+//            for(var i = 0; i < 4; i++)
+//                for(var j = 0; j < 4; j++)
+//                    fillRoundRect(context, 170 + i*120, 170 + j*120, 100, 100, 6, "#ccc0b3");
+//        }
+//
+//        function fillRoundRect(cxt, x, y, width, height, radius, /*optional*/fillColor) {
+//            if( 2*radius > width || 2*radius > height )
+//                return;
+//
+//            cxt.save();
+//            cxt.translate(x, y);
+//            pathRoundRect(cxt, width, height, radius);
+//            cxt.fillStyle = fillColor || "#000";
+//            cxt.fill();
+//            cxt.restore();
+//        }
+//
+//        function strokeRoundRect(cxt, x, y, width, height, radius, /*optional*/lineWidth, /*optional*/strokeColor) {
+//            if( 2*radius > width || 2*radius > height )
+//                return;
+//
+//            cxt.save();
+//            cxt.translate(x, y);
+//            pathRoundRect(cxt, width, height, radius);
+//            cxt.strokeStyle = strokeColor || "#000";
+//            cxt.lineWidth = lineWidth || 1;
+//            cxt.stroke();
+//            cxt.restore();
+
+
+
+
+
+        //linearGradient
+//        var linearGrad = context.createLinearGradient(0, 0, 800, 800);
+//        linearGrad.addColorStop(0.0, "#fff");
+//        linearGrad.addColorStop(1.0, "#000");
+//
+//        context.fillStyle = linearGrad;
+//        context.fillRect(200, 200, 800, 800);
+
+
+
+
+
+        //radialGradient
+//        var radialGrad = context.createRadialGradient(400, 400, 0, 400, 400, 500);
+//        radialGrad.addColorStop(0.0, "#fff");
+//        radialGrad.addColorStop(1.0, "#000");
+//
+//        context.fillStyle = radialGrad;
+//        context.fillRect(0, 0, 800, 800);
+    }
+
+
+
+//    function drawRoundRect(cxt, x, y, width, height, radius) {
+//        cxt.save();
+//        cxt.translate(x, y);
+//        pathRoundRect(cxt, width, height, radius);
+//        cxt.strokeStyle = "#000";
+//        cxt.stroke();
+//        cxt.restore();
+//    }
+//
+//    function pathRoundRect(cxt, width, height, radius) {
+//        cxt.beginPath();
+//        cxt.arc(width-radius, height-radius, radius, 0, 0.5*Math.PI);
+//        cxt.lineTo(radius, height);
+//        cxt.arc(radius, height-radius, radius, 0.5*Math.PI, Math.PI);
+//        cxt.lineTo(0, radius);
+//        cxt.arc(radius, radius, radius, Math.PI, 1.5*Math.PI);
+//        cxt.lineTo(width-radius, 0);
+//        cxt.arc(width-radius, radius, radius, 1.5*Math.PI, 0);
+//        cxt.closePath();
+//    }
+</script>
+</html>

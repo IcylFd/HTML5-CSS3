@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Clock</title>
+	<link rel="stylesheet" href="">
+	<style>
+		*{
+			padding:0;
+			margin:0;
+			list-style: none;
+		}
+		body,html{
+			height:100%;
+		}
+		.container{
+			width:200px;
+			height:200px;
+			border:1px dashed #333;
+			position: relative;
+			top:50%;
+			left:50%;
+			margin-top: -100px;
+			margin-left: -100px;
+		}
+		#clock{
+			width:200px;
+			height:200px;
+			border:1px solid #000;
+			border-radius: 50%;
+			
+		}
+		#clock li{
+			transform:rotate(0deg);
+			position: absolute;
+			top:0;
+			left:100px;
+			height:10px;
+			width:2px;
+			background-color: #000;
+		}
+	
+		#clock li:nth-child(5n+1){
+			height:15px;
+			width:2px;
+		}
+		#pointer{
+			position: absolute;
+		}
+		#hour_p{
+			height:35px;
+			width:5px;
+			background-color: #ccc;
+			position: absolute;
+			top:-135px;
+			left:100px;
+			transform-origin: 0 35px;
+		}
+		#minute_p{
+			height:50px;
+			width:3px;
+			background-color: #333;
+			position: absolute;
+			top:-150px;
+			left:100px;
+			transform-origin: 0 50px;
+		}
+		#second_p{
+			height:70px;
+			width:1px;
+			background-color: red;
+			position: absolute;
+			top:-170px;
+			left:100px;
+			transform-origin: 0 70px;
+
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul id="clock">
+			
+		</ul>
+		<ul id="pointer">
+			<li id="hour_p"></li>
+			<li id="minute_p"></li>
+			<li id="second_p"></li>
+		</ul>
+		
+	</div>
+</body>
+<script>
+	var clock = document.getElementById("clock");
+	var hour_p = document.getElementById("hour_p");
+	var minute_p = document.getElementById("minute_p");
+	var second_p = document.getElementById("second_p");
+	
+	
+	for(var i = 0; i < 60; i++){
+		var timePoint = document.createElement("li");
+		clock.appendChild(timePoint);
+		timePoint.style.transform= "rotate("+i*6+"deg)";
+		timePoint.style.transformOrigin="0 100px"
+	}
+
+	function run(){
+		var date = new Date();
+		var second = date.getSeconds();
+		var minute = date.getMinutes() + second/60;
+		var hour = date.getHours() + minute/60;
+		
+		second_p.style.transform = "rotate("+second*6+"deg)";
+		minute_p.style.transform = "rotate("+minute*6+"deg)";
+    	hour_p.style.transform = "rotate("+hour*30+"deg)";
+    	
+	}
+	run();
+	setInterval(run,1000);
+
+	
+
+	
+</script>
+</html>

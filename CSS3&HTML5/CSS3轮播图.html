@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>淡入淡出轮播图</title>
+    <style type="text/css">
+        *{
+            padding:0;
+            margin: 0;
+        }
+        .slideshow{
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .slideshow img{
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s linear;
+        }
+        .slideshow .active{
+            opacity: 1;
+        }
+        .point{
+            position: absolute;
+            text-align: center;
+            height:10px;
+            width:100px;
+            z-index: 2;
+            bottom:20px;
+            left:250px;
+        }
+        .point span{
+            cursor:pointer;   /*设定鼠标的形状*/
+            float:left;
+            border:1px solid #fff;
+            width:10px;
+            height:10px;
+            border-radius: 50%;
+            background-color: #333;
+            margin-right: 5px;
+        }
+        .point .active{
+            background-color: #48689C;
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow">
+        <img src="img/a.jpg" alt="" class="active">
+        <img src="img/b.jpg" alt="">
+        <img src="img/c.jpg" alt="">
+        <img src="img/d.jpg" alt="">
+        <img src="img/e.jpg" alt="">
+        <div class="point">
+            <span index="1" class="active"> </span>
+            <span index="2"></span>
+            <span index="3"></span>
+            <span index="4"></span>
+            <span index="5"></span>
+        </div>
+    </div>
+</body>
+
+<script>
+    function slideshow() {
+        var slideshow = document.getElementsByClassName('slide'),
+            imgs = document.getElementsByTagName('img'),
+            buttons = document.getElementsByTagName('span'),
+            current = 0;
+
+        function slideOff() {
+            imgs[current].className = '';
+            buttons[current].className = '';
+        }
+
+        function slideOn() {
+            imgs[current].className = 'active';
+            buttons[current].className = 'active';
+        }
+        
+        function slideChange() {
+            slideOff();
+            current++;
+            if(current>=5)
+                current = 0;
+            slideOn();
+        }
+
+        for(var i=0; i<buttons.length; i++) { //定义鼠标移入和移出页码事件
+            buttons[i].onmouseover=function(){
+                slideOff(); //图片淡出
+                current=this.innerHTML-1; //得到鼠标停留的页码对应的current
+                slideOn(); //图片淡出
+            }
+        }
+
+
+        var slideon = setInterval(slideChange,3000);
+
+        slideshow.onmouseover = function () {
+            clearInterval(slideon);
+        }
+        slideshow.onmouseout = function () {
+            setInterval(slideChange,3000);
+        }
+
+    }
+    slideshow();
+
+</script>
+</html>

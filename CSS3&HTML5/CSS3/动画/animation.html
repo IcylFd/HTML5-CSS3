@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		/*div{
+			width:100px;
+			height: 100px;
+			background:red;
+		}*/
+		/*div:hover{
+			animation: test 1s ease reverse;  /*infinite:无限动画*/
+											  /*forwards:保持在最后位置*/
+											  /*reverse:反向*/
+          
+		/*}
+		@keyframes test{
+			0%{
+				width:100px;
+			}
+			25%{
+				width:500px;
+			}
+			50%{
+				height:200px;
+			}
+			100%{
+				width:600px;
+			}
+		}*/
+		.box{
+			width:40px;
+			height: 40px;
+			background-color: pink;
+			animation: run 3s ease infinite;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+		
+		@keyframes run{
+			0%{
+				top:0;
+				left:0;
+
+			}
+			25%{
+				top:0;
+				left:300px;
+			}
+			50%{
+				top:300px;
+				left:300px;
+			}
+			75%{
+				top:300px;
+				left:0;
+			}
+			100%{
+				top:0;
+				left:0;
+			}
+		}
+	</style>		
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

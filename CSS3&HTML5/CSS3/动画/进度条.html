@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		#container{
+			width:500px;
+			height:30px;
+			background-color: #ccc;
+			border-radius: 10px;
+			overflow: hidden;
+		}
+		#bar{
+			height:30px;
+			background-color: pink;
+			border-radius:10px 0 0 10px;
+			width:0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"> 
+   		<div id="bar"></div>
+  	</div>  
+  	<span id="num">0</span>%
+	<button id="btn">Start</button>
+	<script>
+		var btn = document.getElementById("btn"); 
+		var container = document.getElementById("container"); 
+       	var bar = document.getElementById("bar"); 
+       	var num = document.getElementById("num");
+       	var countNum = 0;
+		/*function run(){  
+       		
+    		bar.style.width = parseInt(bar.style.width) + 1 + "%"; 
+    		num.innerHTML = bar.style.width;
+
+    		if(bar.style.width == 100+"%"){  
+     			window.clearTimeout(timer); 
+     			
+     			// container.style.backgroundColor = "pink"
+     			return; 
+    		}  
+   			var timer=window.setTimeout("run()",16);     //16ms 较平滑  动画一般不要低于16ms
+  		} */
+
+
+  		function run(){
+  			if(bar.offsetWidth < 500){
+  				bar.style.width = bar.offsetWidth + 5 +"px";
+				countNum++;
+  				num.innerHTML = countNum;
+  				requestAnimationFrame(run);
+  			}
+  		}
+    	
+    	btn.onclick = function(){  
+    		bar.style.width = 0;
+    		countNum = 0;
+       		requestAnimationFrame(run);     //每次刷新执行一次   （刷新率）
+    	}  
+	</script>
+</body>
+
+</html>

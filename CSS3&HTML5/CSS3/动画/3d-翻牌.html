@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+
+		.container {
+		    margin: 30px;
+		    display: inline-block;
+		    border: 1px dashed #333;
+		    perspective: 1000px;
+		    transform-style: preserve-3d; 
+		}
+		.card {
+		    position: relative;
+		    width: 200px;
+		    height: 200px;
+		    transition: all 1s ease;
+		    transform-style: preserve-3d; 
+		}
+
+		.container:hover .card{
+		    transform: rotateY(180deg);
+
+		}
+		.front ,.back{
+		    position: absolute;
+		    left: 0;
+		    top: 0;
+		    width: 100%;
+		    height: 100%;
+		}
+		.front {
+		    transform: rotateY(0deg);
+		    z-index: 2;
+		    background: pink;
+		}
+		.back {
+		    transform: rotateY(-180deg) translateZ(1px);
+		    background: #ccc;
+		}
+        
+
+
+
+		.container1 {
+		    margin: 30px;
+		    width: 200px;
+		    height: 200px;
+		    border: 1px dashed #333;
+		    perspective: 1000px;
+		    transform-style: preserve-3d; 
+		    position: relative;
+		}
+        .content1, .content2{
+		    position: absolute;
+		    left: 0;
+		    top: 0;
+		    width: 100%;
+		    height: 100%;
+		}
+        .content1{
+        	background: pink;
+        	transform-style:preserve-3d;
+			transition: all 1s ease;
+        }
+        .content2{
+        	background: #ccc;
+        	transition: all 1s ease;
+        }
+        .content1:hover{
+        	transform: rotateY(180deg);
+        }
+	
+	</style>
+</head>
+<body>
+	<!-- <div class="container">
+   		<div class="card">
+	        <div class="front">唯创网讯</div>
+	        <div class="back">小伙伴23</div>
+	        <div class="content1">唯创网讯
+	        	<div class="content2">小伙伴23</div>
+	        </div>
+    	</div>
+	</div>  -->
+
+	<div class="container1">
+		<div class="content1">唯创网讯
+	        <div class="content2">小伙伴23</div>
+	    </div>
+	</div>
+</body>
+</html>

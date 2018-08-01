@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>碰撞检测</title>
+</head>
+<body>
+<canvas id="canvas" style="border: #ccc 1px solid; display: block; margin: 20px auto">
+    当前浏览器不支持canvas，请更换浏览器后再试。
+</canvas>
+</body>
+
+<script>
+    var ball = {x:512, y:100, r:20, g:2.5, vx:-4, vy:-2, color:'#9e97cc'}
+    window.onload = function () {
+        var canvas = document.getElementById('canvas');
+
+        canvas.width = 1024;
+        canvas.height = 768;
+
+        var context = canvas.getContext('2d');
+
+        setInterval(
+            function () {
+                render(context);
+                update();
+            },
+            50
+        )
+    }
+
+    function update() {
+        ball.x += ball.vx;
+        ball.y += ball.vy;
+        ball.vy += ball.g;
+
+        if(ball.y >= 768 - ball.r){
+            ball.y = 768 - ball.r;
+            ball.vy = -40;
+            ball.vx = 30;
+        }
+
+        if(ball.y <= ball.r){
+            ball.y = ball.r;
+            ball.vy = 30;
+            ball.vx = 40;
+        }
+
+        if(ball.x >= 1024 - ball.r){
+            ball.x = 1024 - ball.r;
+            ball.vx = -80;
+            ball.vy = -60;
+        }
+
+        if(ball.x <= ball.r){
+            ball.x = ball.r;
+            ball.vx = 30;
+            ball.vy = 90;
+        }
+    }
+
+    function render(cxt) {
+        cxt.clearRect(0, 0, cxt.canvas.width, cxt.canvas.height);
+        cxt.fillStyle = ball.color;
+        cxt.beginPath();
+        cxt.arc(ball.x, ball.y, ball.r, 0, 2*Math.PI, false);
+        cxt.closePath();
+
+        cxt.fill();
+    }
+</script>
+
+</html>

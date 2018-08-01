@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<style>
+		.div1{
+			width:700px;
+			height: 500px;
+			border:10px solid rgba(0,0,0,.5);
+			background-image: url("../img/b.jpg");   /*从border内部开始, padding不影响*/
+			padding:20px;
+			background-repeat: no-repeat;
+			/*background-origin: border-box; */ 		 /*从border区域开始*/
+			/*background-origin: padding-box; */     /*包含padding*/
+			/*background-origin: content-box;*/      /*从内容区域开始*/
+
+			/*background-attachment: fixed; */    /*背景图片固定位置*/
+
+			/*background-clip: content-box;*/       /*在内容区域剪裁*/
+
+			background-size: contain;    /*属性值可以是 绝对值, 百分比, cover(覆盖), contain(任何一条边接触到边框就停止拉伸), auto*/
+
+			background-position: 0 0, 0px 500px;       /*雪碧图原理*/
+		}
+		h1{
+			font-size:50px;
+			background-image: url("../img/b.jpg"); 
+			color:transparent;   /*rgba(0,0,0,0)*/
+			-webkit-background-clip:text;   /*只在webkit内核可用*/
+		}
+
+		.div2{
+			width:64px;
+			height:64px;
+			background-image: url("../img/img-sprite.png");
+		}
+		.img1{
+			background-position: 0 0;
+		}
+		.img1{
+			background-position: -64px 0;
+		}
+		.img2{
+			background-position: -128px 0;
+		}
+		.img3{
+			background-position: -192px 0;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="div1">
+		<!-- <h1>aaaaaa</h1> -->
+	</div>
+
+	<div class="div2 img0">
+		
+	</div>
+	<div class="div2 img1">
+		
+	</div>
+	<div class="div2 img2">
+		
+	</div>
+	<div class="div2 img3">
+		
+	</div>
+</body>
+</html>
